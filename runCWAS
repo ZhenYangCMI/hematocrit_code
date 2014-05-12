@@ -1,0 +1,5 @@
+# run CWAS
+
+subType='full87sub'; # ultraclean35sub ultraclean39sub full87sub
+
+bash CWASstep1 ${subType}

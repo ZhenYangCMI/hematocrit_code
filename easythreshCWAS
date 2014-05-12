@@ -1,0 +1,36 @@
+# can not have space before or after the = sign
+
+
+for subType in ultraclean35sub; do
+
+mask=/home/data/Projects/hematocrit/mask/stdFunMask_${subType}_100percent.nii
+standBrain=/usr/share/data/fsl-mni152-templates/MNI152_T1_3mm_brain.nii.gz
+
+		if [[ ${subType} = "ultraclean35sub" ]]; then 
+			effectList="sex HCT_demean sexByHCTdemean"
+			dataDir=/home/data/Projects/hematocrit/data/reorganized/CWAS/${subType}/${subType}
+		else 
+			effectList="disease HCT_demean diseaseByHCTDemean sex"
+			dataDir=/home/data/Projects/workingMemory/results/CPAC_analysis_new/groupAnalysis/${covType}/CWAS/${task}SepFWHM8.mdmr
+		fi
+
+		echo ${effectList}
+
+		for effect in ${effectList}; do
+
+			cd ${dataDir}
+
+			outputFile=${effect}
+
+			3dcalc -a ${dataDir}/zstats_${effect}.nii.gz \
+			-expr 'a' -prefix "${dataDir}/cp_zstats_${effect}.nii"
+
+			cmd="easythresh cp_zstats_${effect}.nii ${mask} 1.64 0.05 ${standBrain} ${outputFile}"
+
+			echo $cmd
+			eval $cmd
+
+			rm ${dataDir}/cp_zstats_${effect}.nii
+		done
+	done
+done

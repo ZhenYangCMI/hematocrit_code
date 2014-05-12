@@ -1,0 +1,12 @@
+connectir_mdmr.R \
+-i "/home/data/Projects/hematocrit/data/reorganized/CWAS/ultraclean35sub" \
+--formula 'sex + HCT_demean + sexByHCTdemean + age_demean + PowerMeanFD_demean ' \
+--model "/home/data/Projects/hematocrit/data/regressModel_ultraClearn35sub.csv" \
+--permutations 15000 \
+--factors2perm "sex,HCT_demean,sexByHCTdemean" \
+--threads 8 \
+--memlimit 12 \
+--save-perms \
+ultraclean35sub
+
+

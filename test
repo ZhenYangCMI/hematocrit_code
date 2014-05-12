@@ -1,0 +1,26 @@
+# can not have space before or after the = sign
+#remember to modify the effect list depending on the model
+
+
+#for metric in ReHo fALFF VMHC DegreeCentrality; do
+for metric in DegreeCentrality; do
+
+resultDir="/home/data/Projects/hematocrit/results/${metric}"
+mkdir -p "${resultDir}/easythresh"
+
+
+	for model in ultraclean35sub; do
+
+	mask=/home/data/Projects/hematocrit/mask/meanFunMask_${model}_90percent.nii;
+
+		if [[ ${model} = "ultraclean35sub" ]]; then
+			effectList='T2 T3'
+		else
+			effectList='T1 T2 T3'
+		fi
+
+		echo ${effectList}
+
+done
+done
+		
