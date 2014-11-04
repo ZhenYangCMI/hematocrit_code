@@ -1,0 +1,1 @@
+/home/data/Projects/Zhen/hematocrit/maskPoster/meanStandFunMask_46sub_90prct.nii.gz

@@ -1,0 +1,11 @@
+connectir_subdist.R \
+--infuncs1='/home/data/Projects/Zhen/hematocrit/hematocrit_code/Rockland/poster/CWAS/subFilePath.txt' \
+--ztransform \
+--brainmask1='/home/data/Projects/Zhen/hematocrit/Rockland_poster/masks/CWAS/stdMask_noGSR_45sub_100prct.nii.gz' \
+--bg=/home2/data/Projects/Zhen/workingMemory/mask/MNI152_T1_GREY_3mm_25pc_mask.nii.gz \
+--memlimit=30 \
+--forks=30 \
+--threads=1 \
+--method=pearson \
+--ignoreprocerror \
+/home/data/Projects/Zhen/hematocrit/Rockland_poster/results/CPAC_zy6_1_14_reorganized/noGSR/CWAS_6_4_14

@@ -1,0 +1,12 @@
+connectir_mdmr.R \
+-i "/home/data/Projects/Zhen/hematocrit/Rockland_poster/results/CPAC_zy6_1_14_reorganized/noGSR/CWAS_6_4_14" \
+--formula 'Hematocrit_demean + sex_label + HematocritBySex + age_demean + meanFD_demean' \
+--model "/home/data/Projects/Zhen/hematocrit/Rockland_poster/data/CWAS_regression_45sub.csv" \
+--permutations 15000 \
+--factors2perm 'Hematocrit_demean,HematocritBySex' \
+--forks=12 \
+--threads 1 \
+--memlimit 20 \
+--save-perms \
+mdmr3mmFWHM6WithoutRaceInModel
+

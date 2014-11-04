@@ -1,0 +1,9 @@
+# Run in R
+.libPaths(c("/home/zyang/R/x86_64-pc-linux-gnu-library/3.1", .libPaths()))
+devtools::install_github("connectir", "czarrar")
+
+# If the above doesn't work, then first do the following in your bash prompt
+export R_LIBS="/home/zyang/R"
+mkdir $R_LIBS
+# load R and do
+devtools::install_github("connectir", "czarrar")

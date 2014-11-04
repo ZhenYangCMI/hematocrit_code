@@ -1,0 +1,14 @@
+anatomicalTemplate  :  /home/data/Projects/Zhen/hematocrit/data/%s/%s/anat/anat.nii.gz 
+
+functionalTemplate  :  /home/data/Projects/Zhen/hematocrit/data/%s/%s/rest/rest.nii.gz 
+
+subjectList  :  /home/data/Projects/Zhen/hematocrit/data/Rockland/subList_ultraclearn45sub_poster_final.txt 
+
+exclusionSubjectList  :  None 
+
+siteList  :  None 
+
+scanParametersCSV  :  None 
+
+outputSubjectListLocation  :  /home/data/Projects/Zhen/hematocrit/hematocrit_code/Rockland/CPAC 
+

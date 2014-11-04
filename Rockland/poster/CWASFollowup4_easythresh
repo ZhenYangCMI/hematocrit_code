@@ -1,0 +1,38 @@
+# can not have space before or after the = sign
+
+
+for metric in HCT HCTbySex; do
+    mask=/home/data/Projects/Zhen/hematocrit/Rockland_poster/masks/CWAS/stdMask_noGSR_45sub_100prct.nii.gz;
+    standBrain=/usr/share/data/fsl-mni152-templates/MNI152_T1_3mm_brain.nii.gz
+	
+    resultDir="/home/data/Projects/Zhen/hematocrit/Rockland_poster/results/CPAC_zy6_1_14_reorganized/groupAnalysis/${metric}"
+	mkdir -p ${resultDir}/easythresh
+	
+	effect='T3'		
+	
+	3dcalc -a ${resultDir}/${metric}_${effect}_Z.nii \
+	-expr 'a' -prefix "${resultDir}/easythresh/${metric}_${effect}_Z_pos.nii"
+
+	3dcalc -a ${resultDir}/${metric}_${effect}_Z.nii \
+	-expr '(-1)*a' -prefix "${resultDir}/easythresh/${metric}_${effect}_Z_neg.nii"
+
+	cd ${resultDir}/easythresh
+
+	for sign in pos neg; do
+	outputFile=${metric}_${effect}_Z_${sign}
+
+	cmd1="easythresh \
+	${metric}_${effect}_Z_${sign}.nii \
+	${mask} \
+	2.33 0.05 \
+	${standBrain} \
+	${outputFile}"
+
+	echo $cmd1
+	eval $cmd1
+	
+	done
+
+	3dcalc -a "thresh_${metric}_${effect}_Z_pos.nii.gz" -b "thresh_${metric}_${effect}_Z_neg.nii.gz" -expr 'a+b*(-1)' -prefix "thresh_${metric}_${effect}_Z_cmb.nii"
+
+done
